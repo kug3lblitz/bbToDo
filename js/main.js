@@ -21,6 +21,10 @@ var TodoView = Backbone.View.extend({
 
   initialize: function(){
     this.$el = $('#todo');
+    console.log("this model has been initialized"); 
+    this.on('change', function(){
+      console.log("value for this model has changed."); 
+    });
   },
 
   render: function(){
@@ -37,4 +41,15 @@ var TodoView = Backbone.View.extend({
 
 });
 
+var TodosView = Backbone.View.extend({
+  tagname: 'ul',
+  className: 'container',
+  id: 'todos'
+});
+
 var todoView = new TodoView({ model: myTodo});
+
+var todosView = new TodosView();
+console.log(todosView.el);
+
+todoView.render();
